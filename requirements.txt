@@ -6,7 +6,7 @@ email-validator==2.0.0
 python-dotenv==1.0.0 
 Werkzeug==3.0.1
 PyPDF2==3.0.1
-python-magic-bin==0.4.14
+python-magic-bin
 google-generativeai>=0.3.0
 networkx>=3.1
 matplotlib>=3.7.1
