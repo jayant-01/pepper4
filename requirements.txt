@@ -12,3 +12,4 @@ matplotlib>=3.7.1
 Pillow>=10.0.0
 gunicorn
 flask-migrate
+flask_moment
