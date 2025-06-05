@@ -45,8 +45,7 @@ app.config['RECAPTCHA_SITE_KEY'] = os.getenv('RECAPTCHA_SITE_KEY')
 app.config['RECAPTCHA_SECRET_KEY'] = os.getenv('RECAPTCHA_SECRET_KEY')
 app.config['RECAPTCHA_VERIFY_URL'] = 'https://www.google.com/recaptcha/api/siteverify'
 app.jinja_env.filters['fromjson'] = json.loads
-with app.app_context():
-    db.create_all()
+
 # Configure Google Generative AI with HTTP transport
 try:
     google.generativeai.configure(
@@ -80,7 +79,8 @@ migrate = Migrate(app, db)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
-
+with app.app_context():
+    db.create_all()
 def fromjson_filter(s):
     try:
         return json.loads(s)
