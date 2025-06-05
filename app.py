@@ -3535,4 +3535,4 @@ if __name__ == '__main__':
         FormTemplate.query.delete()
         db.session.commit()
         initialize_templates()  # Add this line to initialize templates
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port=5000)
