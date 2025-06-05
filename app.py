@@ -36,7 +36,15 @@ load_dotenv()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.urandom(24)
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///forms.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///instance/form.db'
+basedir = os.path.abspath(os.path.dirname(__file__))
+instance_path = os.path.join(basedir, 'instance')
+
+# Make sure instance directory exists
+os.makedirs(instance_path, exist_ok=True)
+
+# Set SQLite DB path inside instance folder
+db_path = os.path.join(instance_path, 'forms.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_path
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
@@ -79,8 +87,8 @@ migrate = Migrate(app, db)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 def fromjson_filter(s):
     try:
         return json.loads(s)
