@@ -34,8 +34,6 @@ from datetime import datetime
 load_dotenv()
 
 app = Flask(__name__)
-if not os.path.exists('instance'):
-    os.makedirs('instance')
 app.config['SECRET_KEY'] = os.urandom(24)
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///forms.db'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///instance/form.db'
