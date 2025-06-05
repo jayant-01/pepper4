@@ -3529,12 +3529,7 @@ def oliver_ads():
     db.session.commit()
 
     return jsonify({"status": "success", "updated_response_id": form_clone_id})
-@app.route('/check-db')
-def check_db():
-    db_path = os.path.join(os.getcwd(), 'app.db')  # or your DB filename
-    exists = os.path.isfile(db_path)
-    size = os.path.getsize(db_path) if exists else 0
-    return jsonify({'db_exists': exists, 'db_size': size})
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
