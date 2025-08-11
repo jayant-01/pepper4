@@ -4061,8 +4061,8 @@ def create_mindmap_visualization(mindmap_data):
         # Convert to base64
         img_str = base64.b64encode(buf.read()).decode()
         plt.close()
-        
-        return f'<img src="data:image/png;base64,{img_str}" class="img-fluid" alt="Mind Map">'
+        return img_str
+        # return f'<img src="data:image/png;base64,{img_str}" class="img-fluid" alt="Mind Map">'
     except Exception as e:
         app.logger.error(f"Error creating mind map visualization: {str(e)}")
         return None
