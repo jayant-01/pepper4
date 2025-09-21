@@ -205,8 +205,7 @@ app.config['SECRET_KEY'] = os.urandom(24)
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app.config['SQLALCHEMY_DATABASE_URI'] = (
-    "mysql+pymysql://himanshu:Ayushsoni14@pepperads.mysql.database.azure.com/pepeleads"
-    f"?ssl_ca={os.path.join(basedir, 'certs', 'DigiCertGlobalRootCA.crt.pem')}"
+    "postgresql://pepper4_user:avXcccoCKzW82KwZMqWLJ3pF4Ze9BiAn@dpg-d37pteemcj7s73fqe120-a.oregon-postgres.render.com/pepper4"
 )
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = 'uploads'
